@@ -3,7 +3,7 @@
 Installation dependencies
 > npm install
 
-Develop mode
+Development mode
 > npm run start
 
 Production mode

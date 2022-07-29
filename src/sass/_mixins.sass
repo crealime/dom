@@ -1,0 +1,8 @@
+@mixin media($screen)
+	@media only screen and (max-width : $screen + px)
+		@content
+
+@mixin mediam($screen)
+	@media only screen and (min-width : $screen + px)
+		@content
+

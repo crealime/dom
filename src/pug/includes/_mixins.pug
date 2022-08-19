@@ -1,0 +1,56 @@
+mixin navigation (className, item, active)
+	nav
+		ul
+			each href, title in item
+				if typeof(href) == "object"
+					if title == active
+						li(class="active")
+							a(href=href.link)= title
+							ul
+								each sref, sitle in href
+									if sitle != "link"
+										if typeof(sref) == "object"
+											li
+												a(href=sref.link)= sitle
+												ul
+													each zref, zitle in sref
+														if zitle != "link"
+															li
+																a(href=zref)= zitle
+										else
+											li
+												a(href=sref)= sitle
+					else
+						li
+							a(href=href.link)= title
+							ul
+								each sref, sitle in href
+									if sitle != "link"
+										if typeof(sref) == "object"
+											li
+												a(href=sref.link)= sitle
+												ul
+													each zref, zitle in sref
+														if zitle != "link"
+															li
+																a(href=zref)= zitle
+										else
+											li
+												a(href=sref)= sitle
+				else
+					li(class= (title == active) ? "active" : "")
+						a(href=href)= title
+
+
+
+
+mixin icon(name)
+	svg(class="icon icon-" + name)
+		use(xlink:href="img/icons/sprite.svg#" + name)
+
+mixin logos(name)
+	if name < 10
+		- var less = "0" + name
+	else
+		- var less = name
+	.logos__item(style="background-image: url(img/design/logos/logo-" + less + ".png")

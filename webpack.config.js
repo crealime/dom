@@ -38,7 +38,18 @@ module.exports = {
 		...paths.map((path) => {
 			return new HtmlWebpackPlugin({
 				template: path,
-				filename: `${path.split(/\/|.pug/).splice(-2, 1)}.html`
+				filename: `${path.split(/\/|.pug/).splice(-2, 1)}.html`,
+				minify: {
+					collapseWhitespace: false,
+					keepClosingSlash: false,
+					removeComments: false,
+					removeRedundantAttributes: true,
+					removeScriptTypeAttributes: true,
+					removeStyleLinkTypeAttributes: true,
+					useShortDoctype: true
+				},
+				inject: 'body',
+				scriptLoading: 'defer',
 			})
 		}),
 		new MiniCssExtractPlugin({
@@ -93,7 +104,10 @@ module.exports = {
 			{
 				test: /\.pug$/,
 				loader: 'pug-loader',
-				exclude: /(node_modules|bower_components)/
+				exclude: /(node_modules|bower_components)/,
+				options: {
+					pretty: '\t'
+				}
 			},
 			{
 				test: /\.m?js$/,

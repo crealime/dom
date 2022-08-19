@@ -1,0 +1,19 @@
+include _mixins
+include _variables
+
+doctype html
+html(lang="en" prefix="og: https://ogp.me/ns#")
+	// Head
+	include _head
+	body
+		// Wrapper
+		.wrapper
+			// Header
+			include _header
+			// Content
+			.content
+				block content
+			// Footer
+			include _footer
+			// Popup
+			include _popup

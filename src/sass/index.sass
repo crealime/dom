@@ -1,32 +1,220 @@
+@import "reset"
 @import "fonts"
 @import "vars"
 @import "mixins"
 
+*
+	box-sizing: border-box
+
 html
 	font-size: 16px
+	overflow-x: hidden
 
 	@include media(567)
 		font-size: 14px
 
 body
-	background-color: #d2d2d2
+	background-color: $color-background
 	font-family: $font-prime
-
-
-h1
 	color: $color-prime
 
-h2
+a
 	color: $color-second
+	text-decoration: none
+	transition: all 500ms ease-in-out
+
+	&:hover,&:focus
+		color: $color-prime
+		outline: none
+
+button
+	&:hover,&:focus
+		outline: none
+
 
 .wrapper
 	display: flex
-	
-.logo
-	display: flex
-	width: 304px
-	height: 87px
-	background-image: url("../img/logo.svg")
+	flex-direction: column
+	justify-content: space-between
+	min-height: 100vh
 
-.logo-image
-	width: 500px
+.sub-wrapper
+	display: flex
+
+
+.header
+	position: fixed
+	width: 100vw
+	height: rem(70)
+	display: flex
+	justify-content: center
+	align-items: center
+	background: $color-dark
+	z-index: 2
+
+	@include media(992)
+		justify-content: space-between
+
+	&__h1
+		font-size: rem(36)
+		text-align: center
+		font-weight: 900
+		text-transform: uppercase
+		margin: 0
+
+	&__link
+		border: 1px solid transparent
+		padding: rem(5) rem(20)
+
+		&:focus
+			border: 1px solid $color-second
+
+		@include media(576)
+			font-size: rem(24)
+
+		@include media(360)
+			font-size: rem(18)
+			
+.main
+	padding-top: rem(70)
+
+.movie
+	display: flex
+	padding: rem(50) rem(20)
+	min-height: calc(100vh - rem(120))
+
+	@include media(768)
+		display: block
+	
+	&__left
+		flex-basis: rem(400)
+		flex-shrink: 0
+		margin-right: rem(50)
+
+		@include media(1400)
+			flex-basis: rem(300)
+
+		@include media(768)
+			margin-right: 0
+			margin-bottom: rem(50)
+
+	&__img
+		width: 100%
+
+	&__title
+		margin: 0 0 rem(30) 0
+		
+	&__info-box
+		margin-bottom: rem(30)
+
+	&__info
+		display: flex
+		margin-bottom: rem(7)
+
+		&:last-child
+			margin-bottom: 0
+	&__param
+		margin-right: rem(10)
+		color: $color-second
+
+.footer
+	height: rem(50)
+	background: $color-dark
+	display: flex
+	justify-content: center
+	align-items: center
+
+	&__copy
+		text-align: center
+
+.menu
+	position: relative
+	background: lighten($color-dark, 3%)
+	flex-basis: rem(400)
+	flex-shrink: 0
+	padding: rem(100) 0 0
+	margin-top: rem(20)
+	max-height: calc(100vh - 70px)
+	overflow-y: auto
+	z-index: 1
+
+	@include media(1200)
+		flex-basis: rem(300)
+
+	@include media(992)
+		position: fixed
+		min-width: 100vw
+		min-height: 100vh
+		padding: 0
+		margin-top: rem(70)
+		transform: translateX(100%)
+		transition-duration: 500ms
+
+	&.active
+		@include media(992)
+			transform: translateX(0)
+
+	&__random
+		display: flex
+		width: 100%
+		justify-content: center
+		align-items: center
+		height: rem(60)
+		background: $color-second
+		cursor: pointer
+		color: $color-prime
+		font-size: rem(18)
+		font-weight: 900
+		text-transform: uppercase
+		//margin-bottom: rem(20)
+		transition: all 500ms ease-in-out
+		border: 1px solid transparent
+
+		&:hover,&:focus
+			background: darken($color-second, 20%)
+			border: 1px solid $color-prime
+
+	&__link
+		display: block
+		padding: rem(20)
+		text-align: center
+		background: $color-dark
+		margin-bottom: 1px
+		transition: all 500ms ease-in-out
+		border: 1px solid transparent
+
+		&:hover,&:focus
+			color: $color-prime
+			background: lighten($color-dark, 3%)
+			border: 1px solid $color-prime
+
+		&.active
+			color: $color-prime
+			background: lighten($color-dark, 3%)
+
+.hamburger
+	margin-right: rem(20)
+	display: none
+
+	&:hover
+		cursor: pointer
+
+	&__line
+		width: 40px
+		height: 4px
+		background-color: #ecf0f1
+		display: block
+		margin: 8px auto
+		transition: all 500ms ease-in-out
+		
+	@include media(992)
+		display: block
+
+.hamburger.active .hamburger__line:nth-child(2)
+	opacity: 0
+
+.hamburger.active .hamburger__line:nth-child(1)
+	transform: translateY(12px) rotate(45deg)
+
+.hamburger.active .hamburger__line:nth-child(3)
+	transform: translateY(-12px) rotate(-45deg)

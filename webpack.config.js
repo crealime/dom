@@ -6,6 +6,7 @@ console.log(mode + ' mode')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyPlugin = require("copy-webpack-plugin")
 
 const globule = require('globule')
 const paths = globule.find(['src/pug/*.pug'])
@@ -56,7 +57,13 @@ module.exports = {
 			// Hash in css file name
 			// filename: '[name].[contenthash].css'
 			filename: 'css/[name].css'
-		})
+		}),
+		new CopyPlugin({
+			patterns: [
+				{ from: "src/img", to: "img" },
+				{ from: "src/json", to: "json" },
+			],
+		}),
 	],
 	module: {
 		rules: [
@@ -77,12 +84,12 @@ module.exports = {
 									[
 										'postcss-combine-media-query'
 									],
-									[
-										'postcss-preset-env',
-										{
-											// Options
-										}
-									]
+									// [
+									// 	'postcss-preset-env',
+									// 	{
+									// 		// Options
+									// 	}
+									// ]
 								]
 							}
 						}

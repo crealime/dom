@@ -1,14 +1,26 @@
-@import "vars"
 @import "fonts"
+@import "vars"
+@import "mixins"
+
+html
+	font-size: 16px
+
+	@include media(567)
+		font-size: 14px
 
 body
 	background-color: #d2d2d2
-	font-family: generalFont, sans-serif
+	font-family: $font-prime
+
+
 h1
 	color: $color-prime
 
 h2
 	color: $color-second
+
+.wrapper
+	display: flex
 	
 .logo
 	display: flex

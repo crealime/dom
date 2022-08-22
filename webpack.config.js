@@ -75,6 +75,9 @@ module.exports = {
 							postcssOptions: {
 								plugins: [
 									[
+										'postcss-combine-media-query'
+									],
+									[
 										'postcss-preset-env',
 										{
 											// Options

@@ -65,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		movieContent.insertAdjacentHTML('afterbegin', activeMovieHTML)
 
 		const picture = document.querySelector('.movie__img')
-		picture.onload = () => console.log('!!!!')
 		addActiveClassToMenuItem(id)
 	}
 
@@ -138,3 +137,4 @@ document.addEventListener("DOMContentLoaded", function() {
 	})
 
 })
+

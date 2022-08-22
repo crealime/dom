@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-	const url = '../json/movies.json' // Json file with movies data
+	const url = 'json/movies.json' // Json file with movies data
 	let moviesData = [] // Storage for movies data
 	const menuUl = document.querySelector('.menu__ul')
 	const menu = document.querySelector('.menu')

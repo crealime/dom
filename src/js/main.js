@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		movieContent.innerHTML = ''
 
-		const activeMovie = movies.filter(el => el.id === id)[0]
+		const activeMovie = movies.find(el => el.id === id)
 		const activeMovieHTML = movieTemplate(activeMovie)
 
 		movieContent.insertAdjacentHTML('afterbegin', activeMovieHTML)

@@ -147,16 +147,16 @@ button
 
 	@include media(992)
 		position: fixed
-		min-width: 100vw
+		width: 100vw
 		min-height: 100vh
 		padding: 0
 		margin-top: rem(70)
-		transform: translateX(100%)
+		right: -100vw
 		transition-duration: 500ms
 
 	&.active
 		@include media(992)
-			transform: translateX(0)
+			transform: translateX(-100%)
 
 	&__random
 		display: flex

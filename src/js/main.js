@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	const movieRandomize = document.querySelector('.menu__random')
 	const menuShowButton = document.querySelector('.hamburger')
 
+	// Fill menu template with data
 	function menuTemplate({id, title}) {
 		return `
 			<div class="menu__li">
@@ -16,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		`
 	}
 
+	// Fill movie template with data
 	function movieTemplate({title, description, release, box, runtime, picture}) {
 
 		return `
@@ -64,7 +66,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		movieContent.insertAdjacentHTML('afterbegin', activeMovieHTML)
 
-		const picture = document.querySelector('.movie__img')
 		addActiveClassToMenuItem(id)
 	}
 
@@ -106,11 +107,11 @@ document.addEventListener("DOMContentLoaded", function() {
 	getMoviesData(url)
 		.then(data => {
 			moviesData = data
-			randomMovies(data)
+			randomMovies(moviesData)
 		})
 		.catch(error => console.log(error))
 
-	// Click to select some movies
+	// Click to select some movie
 	menuUl.addEventListener('click', function (event) {
 		event.preventDefault()
 		const movieId = event.target.dataset.id
@@ -123,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		randomMovies(moviesData)
 	})
 
+	// Hide / show menu
 	function toggleMenuClass() {
 		menuShowButton.classList.toggle('active')
 		menu.classList.toggle('active')

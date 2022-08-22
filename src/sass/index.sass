@@ -50,7 +50,7 @@ button
 	justify-content: center
 	align-items: center
 	background: $color-dark
-	z-index: 2
+	z-index: 4
 
 	@include media(992)
 		justify-content: space-between
@@ -87,6 +87,7 @@ button
 		display: block
 	
 	&__left
+		position: relative
 		flex-basis: rem(400)
 		flex-shrink: 0
 		margin-right: rem(50)
@@ -99,7 +100,9 @@ button
 			margin-bottom: rem(50)
 
 	&__img
+		position: relative
 		width: 100%
+		z-index: 2
 
 	&__title
 		margin: 0 0 rem(30) 0
@@ -136,7 +139,7 @@ button
 	margin-top: rem(20)
 	max-height: calc(100vh - 70px)
 	overflow-y: auto
-	z-index: 1
+	z-index: 3
 
 	@include media(1200)
 		flex-basis: rem(300)
@@ -218,3 +221,34 @@ button
 
 .hamburger.active .hamburger__line:nth-child(3)
 	transform: translateY(-12px) rotate(-45deg)
+
+.preloader
+	position: absolute
+	width: 80px
+	height: 80px
+	left: 50%
+	top: 50%
+	perspective: 1600px
+	perspective-origin: 20% 50%
+	transition: 0.5s all
+	opacity: 1
+	transform: translateY(-50%) translateX(-50%)
+	z-index: 1
+
+.spinner
+	width: 80px
+	height: 80px
+	border: 2px solid lighten($color-background, 5%)
+	border-top: 3px solid $color-second
+	border-radius: 100%
+	position: absolute
+	animation: spin 1s infinite linear
+
+
+@keyframes spin
+	from
+		transform: rotate(0deg)
+
+	to
+		transform: rotate(360deg)
+

@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		return `
 		<div class="movie__left">
+			<div class="preloader">
+				<div class="spinner"></div>
+			</div>
 			<img class="movie__img" src="${picture}" alt="Captain America: The First Avenger">
 		</div>
 		<div class="movie__right">
@@ -61,6 +64,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		movieContent.insertAdjacentHTML('afterbegin', activeMovieHTML)
 
+		const picture = document.querySelector('.movie__img')
+		picture.onload = () => console.log('!!!!')
 		addActiveClassToMenuItem(id)
 	}
 
@@ -104,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			moviesData = data
 			randomMovies(data)
 		})
-		.catch(error => console.log('Error: ' + error))
+		.catch(error => console.log(error))
 
 	// Click to select some movies
 	menuUl.addEventListener('click', function (event) {

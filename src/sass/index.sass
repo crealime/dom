@@ -44,7 +44,7 @@ button
 
 .header
 	position: fixed
-	width: 100vw
+	width: 100%
 	height: rem(70)
 	display: flex
 	justify-content: center
@@ -74,91 +74,35 @@ button
 
 		@include media(360)
 			font-size: rem(18)
-			
-.main
-	padding-top: rem(70)
-
-.movie
-	display: flex
-	padding: rem(50) rem(20)
-	min-height: calc(100vh - rem(120))
-
-	@include media(768)
-		display: block
-	
-	&__left
-		position: relative
-		flex-basis: rem(400)
-		flex-shrink: 0
-		margin-right: rem(50)
-
-		@include media(1400)
-			flex-basis: rem(300)
-
-		@include media(768)
-			margin-right: 0
-			margin-bottom: rem(50)
-
-	&__img
-		position: relative
-		width: 100%
-		min-height: rem(300)
-		z-index: 2
-
-	&__title
-		margin: 0 0 rem(30) 0
-		font-size: rem(24)
-		font-weight: 900
-
-	&__info-box
-		margin-bottom: rem(30)
-
-	&__info
-		display: flex
-		margin-bottom: rem(7)
-
-		&:last-child
-			margin-bottom: 0
-	&__param
-		margin-right: rem(10)
-		color: $color-second
-
-.footer
-	height: rem(50)
-	background: $color-dark
-	display: flex
-	justify-content: center
-	align-items: center
-
-	&__copy
-		text-align: center
 
 .menu
-	position: relative
-	background: lighten($color-dark, 3%)
+	position: fixed
+	right: 0
+	top: rem(70)
 	flex-basis: rem(400)
+	padding-top: rem(50)
 	flex-shrink: 0
-	padding: rem(100) 0 0
-	margin-top: rem(20)
-	height: auto
+	width: rem(400)
+	height: calc(100% - rem(70))
 	overflow-y: auto
-	z-index: 3
+	background: lighten($color-dark, 3%)
+	z-index: 1
 
 	@include media(1200)
-		flex-basis: rem(300)
+		width: rem(300)
 
-	@include media(992)
-		position: fixed
-		width: 100vw
-		height: 100vh
-		padding: 0
-		margin-top: rem(70)
-		right: -100vw
-		transition-duration: 500ms
-
-	&.active
 		@include media(992)
-			transform: translateX(-100%)
+			width: 100%
+			height: 100vh
+			padding-top: 0
+			margin-top: rem(70)
+			top: 0
+			right: -100%
+			transition: transform 500ms
+
+			&.active
+				@include media(992)
+					transform: translateX(-100%)
 
 	&__random
 		display: flex
@@ -197,6 +141,82 @@ button
 		&.active
 			color: $color-prime
 			background: lighten($color-dark, 3%)
+			
+.main
+	padding-top: rem(70)
+
+.movie
+	display: flex
+	padding: rem(50) 0 rem(50) rem(20)
+	min-height: calc(100vh - rem(120))
+
+	@include media(768)
+		display: block
+	
+	&__left
+		position: relative
+		flex-basis: rem(400)
+		flex-shrink: 0
+		margin-right: rem(50)
+
+		@include media(1400)
+			flex-basis: rem(300)
+
+		@include media(768)
+			margin-right: rem(20)
+			margin-bottom: rem(50)
+			
+	&__center
+		margin-right: rem(20)
+
+	&__img
+		position: relative
+		width: 100%
+		min-height: rem(300)
+		z-index: 2
+
+	&__title
+		margin: 0 0 rem(30) 0
+		font-size: rem(24)
+		font-weight: 900
+
+	&__info-box
+		margin-bottom: rem(30)
+
+	&__info
+		display: flex
+		margin-bottom: rem(7)
+
+		&:last-child
+			margin-bottom: 0
+	&__param
+		margin-right: rem(10)
+		color: $color-second
+
+	&__right
+		flex-basis: rem(400)
+		flex-shrink: 0
+
+		@include media(1200)
+			flex-basis: rem(300)
+
+		@include media(992)
+			display: none
+
+.footer
+	position: relative
+	height: rem(50)
+	background: $color-dark
+	display: flex
+	justify-content: center
+	align-items: center
+	z-index: 4
+
+	@include media(992)
+		z-index: 1
+
+	&__copy
+		text-align: center
 
 .hamburger
 	margin-right: rem(20)

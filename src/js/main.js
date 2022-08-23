@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	let moviesData = [] // Storage for movies data
 	const menuUl = document.querySelector('.menu__ul')
 	const menu = document.querySelector('.menu')
-	const movieContent = document.querySelector('.movie')
+	const movieContent = document.querySelector('.main')
 	const movieRandomize = document.querySelector('.menu__random')
 	const menuShowButton = document.querySelector('.hamburger')
 
@@ -21,30 +21,33 @@ document.addEventListener("DOMContentLoaded", function() {
 	function movieTemplate({title, description, release, box, runtime, picture}) {
 
 		return `
-		<div class="movie__left">
-			<div class="preloader">
-				<div class="spinner"></div>
+		<section class="movie">
+			<div class="movie__left">
+				<div class="preloader">
+					<div class="spinner"></div>
+				</div>
+				<img class="movie__img" src="${picture}" alt="Captain America: The First Avenger">
 			</div>
-			<img class="movie__img" src="${picture}" alt="Captain America: The First Avenger">
-		</div>
-		<div class="movie__right">
-			<h2 class="movie__title">${title}</h2>
-			<div class="movie__info-box">
-				<div class="movie__info">
-					<div class="movie__param">Release Date:</div>
-					<div class="movie__param-value">${release}</div>
+			<div class="movie__center">
+				<h2 class="movie__title">${title}</h2>
+				<div class="movie__info-box">
+					<div class="movie__info">
+						<div class="movie__param">Release Date:</div>
+						<div class="movie__param-value">${release}</div>
+					</div>
+					<div class="movie__info">
+						<div class="movie__param">Box Office:</div>
+						<div class="movie__param-value">${box}</div>
+					</div>
+					<div class="movie__info">
+						<div class="movie__param">Runtime:</div>
+						<div class="movie__param-value">${runtime}</div>
+					</div>
 				</div>
-				<div class="movie__info">
-					<div class="movie__param">Box Office:</div>
-					<div class="movie__param-value">${box}</div>
-				</div>
-				<div class="movie__info">
-					<div class="movie__param">Runtime:</div>
-					<div class="movie__param-value">${runtime}</div>
-				</div>
+				<p class="movie__description">${description}</p>
 			</div>
-			<p class="movie__description">${description}</p>
-		</div>
+			<div class="movie__right"></div>
+		</section>
 		`
 	}
 
@@ -56,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		})
 	}
 
-	// Find selected movie and paste it into the section
+	// Find selected movie and paste it into the main
 	function renderActualMovie(movies, id = '01') {
 
 		movieContent.innerHTML = ''
@@ -130,12 +133,17 @@ document.addEventListener("DOMContentLoaded", function() {
 		menu.classList.toggle('active')
 	}
 
+	function hideMenuClass() {
+		menuShowButton.classList.remove('active')
+		menu.classList.remove('active')
+	}
+
 	menuShowButton.addEventListener('click', function () {
 		toggleMenuClass()
 	})
 
 	menu.addEventListener('click', function () {
-		toggleMenuClass()
+		hideMenuClass()
 	})
 
 })

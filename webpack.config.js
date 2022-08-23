@@ -43,7 +43,7 @@ module.exports = {
 				minify: {
 					collapseWhitespace: false,
 					keepClosingSlash: false,
-					removeComments: false,
+					removeComments: true,
 					removeRedundantAttributes: true,
 					removeScriptTypeAttributes: true,
 					removeStyleLinkTypeAttributes: true,
@@ -116,7 +116,7 @@ module.exports = {
 				loader: 'pug-loader',
 				exclude: /(node_modules|bower_components)/,
 				options: {
-					pretty: '\t'
+					// pretty: '\t'
 				}
 			},
 			{

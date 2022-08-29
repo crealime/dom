@@ -1,4 +1,6 @@
-# Kottans | DOM
+# Document Object Model | Kottans
+
+[Demo](https://crealime.github.io/dom/dist)
 
 Installation dependencies
 > npm install

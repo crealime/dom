@@ -1,4 +1,4 @@
-# Webpack starter template
+# Kottans | DOM
 
 Installation dependencies
 > npm install
